@@ -2,7 +2,7 @@
 
 ## In Progress
 
-*No items currently in progress.*
+- [ ] No items currently in progress.*
 
 ## Pending
 
@@ -56,12 +56,20 @@
 - [ ] Performance: time to process a fund (MVP target < 2 minutes for medium-size funds)
 - [ ] Next Steps
 - [ ] Identify required data sources and obtain API access
-- [ ] Implement Crunchbase connector and CLI
 - [ ] Run initial tests on sample funds
 
 ## Completed
 
-*No items completed yet.*
+- [x] No items completed yet.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] Add CSV exporter and tests
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] Implement Crunchbase connector and CLI
+- [x] This file is automatically updated by the coding agent.*
+- [x] Propagate fund identifier from CLI through normalizer so fund.id and investments.fund_id are set
 
 ---
 
