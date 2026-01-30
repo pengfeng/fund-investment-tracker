@@ -1,8 +1,8 @@
 """
 Normalize raw connector output into the project's data model.
 """
-from typing import List, Dict, Any
 import uuid
+from typing import Any, Dict, List
 
 
 def normalize_company(raw: Dict[str, Any]) -> Dict[str, Any]:

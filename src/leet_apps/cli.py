@@ -5,7 +5,7 @@ CLI entrypoint for fund-investment-tracker (MVP)
 import argparse
 import json
 import sys
-from typing import Dict, Any
+from typing import Any, Dict
 
 from leet_apps.connectors.crunchbase import CrunchbaseConnector
 from leet_apps.normalizer import normalize_results
