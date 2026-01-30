@@ -4,6 +4,7 @@
 
 - [ ] No items currently in progress.*
 - [ ] Implement Crunchbase connector and CLI
+- [ ] Add unit tests for Crunchbase connector and CLI
 
 ## Pending
 
@@ -66,6 +67,7 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] Add CSV exporter and tests
+- [x] This file is automatically updated by the coding agent.*
 
 ---
 

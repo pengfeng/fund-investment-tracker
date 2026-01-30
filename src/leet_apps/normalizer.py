@@ -34,8 +34,8 @@ def normalize_investment(raw: Dict[str, Any], fund_id: str) -> Dict[str, Any]:
     }
 
 
-def normalize_results(raw_list: List[Dict[str, Any]]) -> Dict[str, Any]:
-    fund_id = "unknown-fund"
+def normalize_results(raw_list: List[Dict[str, Any]], fund_name: str = "unknown-fund") -> Dict[str, Any]:
+    fund_id = fund_name
     companies = []
     investments = []
     for raw in raw_list:

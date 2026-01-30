@@ -26,7 +26,7 @@ def main(argv=None):
     connector = CrunchbaseConnector()
     raw = connector.find_portfolio(fund_input)
 
-    normalized = normalize_results(raw)
+    normalized = normalize_results(raw, fund_input)
 
     # Use exporter for output
     if args.output:
