@@ -1,0 +1,14 @@
+# Configuration for fund-investment-tracker
+connectors:
+  crunchbase:
+    enabled: true
+    api_key: null  # Provide via environment variable or runtime config
+
+concurrency:
+  max_workers: 4
+  retry:
+    max_attempts: 3
+    backoff_seconds: 2
+
+export:
+  default_format: json
