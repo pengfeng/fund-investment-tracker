@@ -43,15 +43,14 @@ class Orchestrator:
             logger.warning("Connector %s failed: %s", getattr(connector, "__class__", type(connector)), e)
             return []
 
-    def run(self, fund_input: str) -> List[Dict[str, Any]]:
-        """Execute all connectors and return a deduplicated list of raw company records.
+    def run(self, fund_input: str) -> Dict[str, Any]:
+        """Execute all connectors, deduplicate results, normalize and return the unified data model.
 
-        Deduplication key: normalized company_name (lowercase, stripped). If company_name missing,
-        the record is included as-is with a generated placeholder id handled later by normalizer.
+        Returns a dict: {"fund": {...}, "companies": [...], "investments": [...]}.
         """
         results = []
         if not self.connectors:
-            return results
+            return {"fund": {"id": fund_input}, "companies": [], "investments": []}
 
         # Run connectors in parallel
         with ThreadPoolExecutor(max_workers=self.max_workers) as ex:
@@ -103,4 +102,23 @@ class Orchestrator:
                 # no name, include raw
                 deduped.append(rec)
 
-        return deduped
+        # Normalize deduped raw records into the unified schema
+        try:
+            from leet_apps.normalizer import normalize_results
+
+            normalized = normalize_results(deduped, fund_input)
+            return normalized
+        except Exception:
+            # As a fallback, return a minimal structure
+            return {"fund": {"id": fund_input}, "companies": deduped, "investments": []}
+
+
+def run_for_fund(fund_input: str) -> Dict[str, Any]:
+    """Convenience function to run the default orchestrator (with Crunchbase connector) for a fund."""
+    try:
+        from leet_apps.connectors.crunchbase import CrunchbaseConnector
+
+        orch = Orchestrator(connectors=[CrunchbaseConnector()])
+    except Exception:
+        orch = Orchestrator()
+    return orch.run(fund_input)
