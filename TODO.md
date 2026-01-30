@@ -2,7 +2,9 @@
 
 ## In Progress
 
-*No items currently in progress.*
+- [ ] No items currently in progress.*
+- [ ] Implement Crunchbase connector and CLI
+- [ ] Add CSV exporter and tests
 
 ## Pending
 
@@ -56,12 +58,13 @@
 - [ ] Performance: time to process a fund (MVP target < 2 minutes for medium-size funds)
 - [ ] Next Steps
 - [ ] Identify required data sources and obtain API access
-- [ ] Implement Crunchbase connector and CLI
 - [ ] Run initial tests on sample funds
 
 ## Completed
 
-*No items completed yet.*
+- [x] No items completed yet.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
 
 ---
 
