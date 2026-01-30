@@ -29,7 +29,11 @@ def main(argv=None):
     orchestrator = Orchestrator(connectors=[CrunchbaseConnector()])
     raw = orchestrator.run(fund_input)
 
-    normalized = normalize_results(raw, fund_input)
+    # Orchestrator may return normalized data (dict) or a raw list of records
+    if isinstance(raw, dict) and "companies" in raw:
+        normalized = raw
+    else:
+        normalized = normalize_results(raw, fund_input)
 
     # Use exporter for output
     if args.output:
