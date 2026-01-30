@@ -1,70 +1,106 @@
 """
-Orchestrator coordinates connectors to gather portfolio data for a fund.
+Orchestrator: coordinate connector execution, aggregation, and simple deduplication.
 
-For MVP this orchestrator:
-- Loads enabled connectors (currently only CrunchbaseConnector)
-- Calls each connector to fetch raw records
-- Deduplicates records by company_name
-- Returns combined normalized output by calling normalize_results
+This is an MVP implementation intended to:
+- Register connectors (each exposing find_portfolio(fund_input) -> List[Dict])
+- Execute connectors (optionally in parallel) and gather results
+- Merge/deduplicate company records by company_name (case-insensitive)
+- Return a flattened list of raw records suitable for normalization
 
-This is intentionally simple to keep testability high. Concurrency and caching hooks are provided in the constructor.
+Concurrency and retry behavior are configurable via src/leet_apps/config.yaml.
 """
 from typing import List, Dict, Any
 import logging
-
-from leet_apps.connectors.crunchbase import CrunchbaseConnector
-from leet_apps.normalizer import normalize_results
+import yaml
+import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 logger = logging.getLogger(__name__)
 
 
-class Orchestrator:
-    def __init__(self, connectors: List[Any] = None, max_workers: int = 1):
-        # connectors is a list of connector instances; if None, instantiate default connectors
-        if connectors is None:
-            connectors = [CrunchbaseConnector()]
-        self.connectors = connectors
-        self.max_workers = max_workers
+def _load_config():
+    cfg_path = os.path.join(os.path.dirname(__file__), "config.yaml")
+    try:
+        with open(cfg_path, "r", encoding="utf-8") as f:
+            return yaml.safe_load(f) or {}
+    except FileNotFoundError:
+        return {}
 
-    def _collect_from_connector(self, connector, fund_input: str) -> List[Dict[str, Any]]:
+
+class Orchestrator:
+    def __init__(self, connectors: List[Any] = None):
+        self.connectors = connectors or []
+        self.config = _load_config()
+        self.max_workers = self.config.get("concurrency", {}).get("max_workers", 4)
+
+    def add_connector(self, connector: Any):
+        self.connectors.append(connector)
+
+    def _run_connector(self, connector, fund_input: str) -> List[Dict[str, Any]]:
         try:
-            return connector.find_portfolio(fund_input)
+            return connector.find_portfolio(fund_input) or []
         except Exception as e:
-            logger.warning("Connector %s failed: %s", connector.__class__.__name__, e)
+            logger.warning("Connector %s failed: %s", getattr(connector, "__class__", type(connector)), e)
             return []
 
-    def _dedupe(self, raw_records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        seen = set()
-        out = []
-        for r in raw_records:
-            name = (r.get("company_name") or "").strip().lower()
-            if not name:
-                # assign synthetic key
-                key = id(r)
+    def run(self, fund_input: str) -> List[Dict[str, Any]]:
+        """Execute all connectors and return a deduplicated list of raw company records.
+
+        Deduplication key: normalized company_name (lowercase, stripped). If company_name missing,
+        the record is included as-is with a generated placeholder id handled later by normalizer.
+        """
+        results = []
+        if not self.connectors:
+            return results
+
+        # Run connectors in parallel
+        with ThreadPoolExecutor(max_workers=self.max_workers) as ex:
+            futures = {ex.submit(self._run_connector, c, fund_input): c for c in self.connectors}
+            for fut in as_completed(futures):
+                try:
+                    r = fut.result()
+                    if r:
+                        results.extend(r)
+                except Exception as e:
+                    logger.warning("Error collecting connector result: %s", e)
+
+        # Deduplicate by company_name
+        seen = {}
+        deduped = []
+        for rec in results:
+            name = rec.get("company_name")
+            if name:
+                key = name.strip().lower()
             else:
-                key = name
-            if key in seen:
-                # could merge records here; for now skip duplicates
-                continue
-            seen.add(key)
-            out.append(r)
-        return out
+                # fallback: include record (no dedup key)
+                key = None
 
-    def run(self, fund_input: str) -> Dict[str, Any]:
-        raw_accumulator: List[Dict[str, Any]] = []
-        for conn in self.connectors:
-            logger.info("Running connector %s", conn.__class__.__name__)
-            records = self._collect_from_connector(conn, fund_input)
-            if records:
-                raw_accumulator.extend(records)
+            if key:
+                if key in seen:
+                    # merge source_links and investment info conservatively
+                    existing = seen[key]
+                    # merge source_links
+                    existing_links = set(existing.get("source_links", []))
+                    for l in rec.get("source_links", []):
+                        if l:
+                            existing_links.add(l)
+                    existing["source_links"] = list(existing_links)
+                    # merge investment.source_links
+                    existing_inv = existing.get("investment") or {}
+                    rec_inv = rec.get("investment") or {}
+                    inv_links = set(existing_inv.get("source_links", []))
+                    for l in rec_inv.get("source_links", []):
+                        if l:
+                            inv_links.add(l)
+                    if rec_inv:
+                        merged_inv = {**existing_inv, **rec_inv}
+                        merged_inv["source_links"] = list(inv_links)
+                        existing["investment"] = merged_inv
+                else:
+                    seen[key] = rec.copy()
+                    deduped.append(seen[key])
+            else:
+                # no name, include raw
+                deduped.append(rec)
 
-        deduped = self._dedupe(raw_accumulator)
-        # Use normalizer to produce unified model
-        normalized = normalize_results(deduped, fund_input)
-        return normalized
-
-
-# Convenience function
-def run_for_fund(fund_input: str) -> Dict[str, Any]:
-    orch = Orchestrator()
-    return orch.run(fund_input)
+        return deduped

@@ -23,8 +23,11 @@ def main(argv=None):
     args = parse_args()
     fund_input = args.fund
 
-    connector = CrunchbaseConnector()
-    raw = connector.find_portfolio(fund_input)
+    # Use orchestrator to allow multiple connectors and deduplication
+    from leet_apps.orchestrator import Orchestrator
+
+    orchestrator = Orchestrator(connectors=[CrunchbaseConnector()])
+    raw = orchestrator.run(fund_input)
 
     normalized = normalize_results(raw, fund_input)
 
