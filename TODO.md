@@ -3,10 +3,10 @@
 ## In Progress
 
 - [ ] No items currently in progress.*
-- [ ] Add unit tests for Crunchbase connector and CLI
 - [ ] Add unit tests for CLI
 - [ ] Implement Crunchbase API client (replace stub)
 - [ ] Add Orchestrator to coordinate connectors and deduplicate results
+- [ ] Add unit tests for Crunchbase connector and CLI
 
 ## Pending
 
@@ -72,6 +72,7 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] Implement Crunchbase connector and CLI
+- [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
