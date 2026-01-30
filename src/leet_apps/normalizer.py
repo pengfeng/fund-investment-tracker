@@ -34,8 +34,12 @@ def normalize_investment(raw: Dict[str, Any], fund_id: str) -> Dict[str, Any]:
     }
 
 
-def normalize_results(raw_list: List[Dict[str, Any]]) -> Dict[str, Any]:
-    fund_id = "unknown-fund"
+def normalize_results(raw_list: List[Dict[str, Any]], fund_id: str = "unknown-fund") -> Dict[str, Any]:
+    """Normalize a list of raw records and attach the provided fund identifier.
+
+    The fund_id parameter is used as the canonical fund identifier propagated to each
+    investment record and into the returned fund metadata.
+    """
     companies = []
     investments = []
     for raw in raw_list:

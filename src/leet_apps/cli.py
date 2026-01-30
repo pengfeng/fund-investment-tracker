@@ -26,7 +26,10 @@ def main(argv=None):
     connector = CrunchbaseConnector()
     raw = connector.find_portfolio(fund_input)
 
-    normalized = normalize_results(raw)
+    # Propagate fund identifier if connector provides one, else use normalized fund name
+    fund_id = getattr(connector, "fund_id", None) or fund_input
+
+    normalized = normalize_results(raw, fund_id=fund_id)
 
     # Use exporter for output
     if args.output:
