@@ -6,6 +6,12 @@
 - [ ] Add unit tests for Crunchbase connector and CLI
 - [ ] Add unit tests for CLI
 - [ ] Implement Crunchbase API client (replace stub)
+- [ ] Implement Crunchbase API client (replace stub)
+- [ ] Implement Crunchbase API client (replace stub)
+- [ ] Implement Crunchbase API client (replace stub) — start work in feature branch
+- [ ] Implement Crunchbase API client (feature/crunchbase-api)
+- [ ] Implement Crunchbase API client (feature/crunchbase-api)
+- [ ] - [ ] Phase 1: MVP: CLI input, Crunchbase connector (using API or scraping with care), normalize output, export JSON/CSV
 
 ## Pending
 
@@ -46,7 +52,6 @@
 - [ ] Investment: fund_id, company_id, round_type, date, amount, co_investors, source_links, confidence
 - [ ] Implementation Guide Compliance
 - [ ] Implementation Plan
-- [ ] Phase 1: MVP: CLI input, Crunchbase connector (using API or scraping with care), normalize output, export JSON/CSV
 - [ ] Phase 2: Add more connectors (PitchBook, LinkedIn, news), UI, scheduling
 - [ ] Phase 3: Improve entity resolution, fuzzy matching, and dashboards
 - [ ] Risks
@@ -71,6 +76,12 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] Implement Crunchbase connector and CLI
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 
