@@ -12,9 +12,14 @@ class CrunchbaseConnector:
 
     def find_portfolio(self, fund_input: str) -> List[Dict[str, Any]]:
         """Return a list of raw company/investment records for the given fund.
-        Stub implementation returns sample data.
+        For the MVP we keep a stub unless an API key is provided via environment/config.
         """
-        # Sample stub data
+        # If an API key is configured, attempt to use a hypothetical API client (not implemented yet)
+        if self.api_key:
+            # TODO: implement Crunchbase API client using api_key. For now, fall back to stub.
+            pass
+
+        # Sample stub data used for tests and initial CLI demos
         return [
             {
                 "company_name": "Acme Robotics",
