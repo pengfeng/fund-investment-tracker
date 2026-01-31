@@ -9,6 +9,8 @@
 - [ ] N1: Respect rate limits and robots.txt; use caching
 - [ ] F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies
 - [ ] F2: Implement PitchBook connector (stub + tests)
+- [ ] F6: Export results (CSV/JSON) and provide a summary report
+- [ ] Improve Crunchbase connector parsing and add robust unit tests (handle real API shapes, date/amount normalization, and retries)
 
 ## Pending
 
@@ -24,7 +26,6 @@
 - [ ] Requirements
 - [ ] 1 Functional
 - [ ] F1: Accept fund input via CLI, API, or UI
-- [ ] F6: Export results (CSV/JSON) and provide a summary report
 - [ ] 2 Non-functional
 - [ ] N2: Modular connector architecture for data sources
 - [ ] N4: Secure storage of any API keys; do not commit keys
@@ -99,6 +100,8 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] Add official fund website connector (simple scraper)
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
