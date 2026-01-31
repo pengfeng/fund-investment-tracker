@@ -40,10 +40,19 @@ class CrunchbaseConnector:
                     {
                         "round_type": "Series A",
                         "date": "2018-05-10",
-                        "amount": "5,000,000",
+                        "amount": "$5,000,000",
                         "co_investors": ["OtherVC"],
+                        "source_links": ["https://example.com/article-about-sampleco"]
                     }
                 ],
+                # Also provide a singular 'investment' for tests expecting that key
+                "investment": {
+                    "round_type": "Series A",
+                    "date": "2018-05-10",
+                    "amount": "$5,000,000",
+                    "co_investors": ["OtherVC"],
+                    "source_links": ["https://example.com/article-about-sampleco"]
+                },
                 "source_links": [
                     "https://example.com/article-about-sampleco"
                 ],
