@@ -6,9 +6,61 @@ import csv
 import json
 
 
+def generate_summary(data: Dict[str, Any]) -> Dict[str, Any]:
+    """Generate a simple summary report for the normalized data model.
+
+    Summary includes counts and basic aggregates useful for analysts.
+    """
+    fund = data.get("fund", {})
+    companies = data.get("companies", []) or []
+    investments = data.get("investments", []) or []
+
+    total_companies = len(companies)
+    total_investments = len(investments)
+
+    # Compute industry distribution
+    industry_counts = {}
+    for c in companies:
+        ind = c.get("industry") or "unknown"
+        industry_counts[ind] = industry_counts.get(ind, 0) + 1
+
+    # Status distribution
+    status_counts = {}
+    for c in companies:
+        st = c.get("status") or "unknown"
+        status_counts[st] = status_counts.get(st, 0) + 1
+
+    # Source links count (unique)
+    source_links = set()
+    for c in companies:
+        for s in c.get("source_links", []) or []:
+            source_links.add(s)
+    for inv in investments:
+        for s in inv.get("source_links", []) or []:
+            source_links.add(s)
+
+    summary = {
+        "fund_id": fund.get("id"),
+        "total_companies": total_companies,
+        "total_investments": total_investments,
+        "unique_source_links": len(source_links),
+        "industry_counts": industry_counts,
+        "status_counts": status_counts,
+    }
+    return summary
+
+
 def export_json(data: Dict[str, Any], path: str):
+    # Include a generated summary when exporting JSON
+    data_with_summary = dict(data)
+    try:
+        data_with_summary["summary"] = generate_summary(data)
+    except Exception:
+        # If summary generation fails, fall back to original data
+        data_with_summary = data
+
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
+        json.dump(data_with_summary, f, indent=2)
 
 
 def export_csv(data: Dict[str, Any], path: str):
