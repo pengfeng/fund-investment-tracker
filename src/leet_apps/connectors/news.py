@@ -45,7 +45,7 @@ class NewsConnector:
         raise RuntimeError("News API request failed after retries")
 
     def _parse_api_response(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
-        items = []
+        items: List[Dict[str, Any]] = []
         if not data:
             return items
         articles = data.get("articles") or []
@@ -57,7 +57,7 @@ class NewsConnector:
             import re
 
             text = f"{title} {desc}"
-            matches = re.findall(r"([A-Z][A-Za-z0-9&\-\.]+(?:\s+[A-Z][A-Za-z0-9&\-\.]+)+)", text)
+            matches = re.findall(r"([A-Z][A-Za-z0-9&\-.]+(?:\s+[A-Z][A-Za-z0-9&\-.]+)+)", text)
             for m in set(matches):
                 if 3 <= len(m) <= 100:
                     items.append(
@@ -102,7 +102,7 @@ class NewsConnector:
                     "date": "2019-05-20",
                     "amount": "$12,000,000",
                     "co_investors": [fund_input],
-                    "source_links": ["https://news.example/gamma"] ,
+                    "source_links": ["https://news.example/gamma"],
                 },
                 "source_links": ["https://news.example/gamma"],
             },

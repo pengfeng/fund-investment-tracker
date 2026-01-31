@@ -30,6 +30,7 @@
 - [ ] Implement Crunchbase API client (feature/crunchbase-api)
 - [ ] Implement Crunchbase API client (feature/crunchbase-api)
 - [ ] Implement Crunchbase API client (replace stub)
+- [ ] Implement Crunchbase API client (feature/crunchbase-api)
 
 ## Pending
 
