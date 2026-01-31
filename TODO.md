@@ -3,9 +3,7 @@
 ## In Progress
 
 - [ ] No items currently in progress.*
-- [ ] Implement Crunchbase API client (replace stub)
-- [ ] Implement per-field confidence scores and source attribution in normalizer
-- [ ] F5: Provide confidence score and source links for each data point
+- [ ] Run initial tests on sample funds
 
 ## Pending
 
@@ -57,7 +55,6 @@
 - [ ] Accuracy: % of company-investment pairs verified by at least one reliable source
 - [ ] Performance: time to process a fund (MVP target < 2 minutes for medium-size funds)
 - [ ] Next Steps
-- [ ] Run initial tests on sample funds
 - [ ] Add Orchestrator to coordinate connectors and deduplicate results
 - [ ] Add unit tests for CLI
 - [ ] Identify required data sources and obtain API access
@@ -85,6 +82,13 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] Add unit tests for Crunchbase connector and CLI
 - [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] F5: Provide confidence score and source links for each data point
+- [x] This file is automatically updated by the coding agent.*
+- [x] Implement Crunchbase API client (replace stub)
+- [x] This file is automatically updated by the coding agent.*
+- [x] Implement per-field confidence scores and source attribution in normalizer
 - [x] This file is automatically updated by the coding agent.*
 
 ---
