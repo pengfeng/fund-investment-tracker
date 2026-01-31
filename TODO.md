@@ -4,9 +4,6 @@
 
 - [ ] No items currently in progress.*
 - [ ] Implement Crunchbase API client (replace stub)
-- [ ] Add Orchestrator to coordinate connectors and deduplicate results
-- [ ] Add unit tests for Crunchbase connector and CLI
-- [ ] Add unit tests for CLI
 
 ## Pending
 
@@ -61,6 +58,9 @@
 - [ ] Next Steps
 - [ ] Identify required data sources and obtain API access
 - [ ] Run initial tests on sample funds
+- [ ] Add Orchestrator to coordinate connectors and deduplicate results
+- [ ] Add unit tests for Crunchbase connector and CLI
+- [ ] Add unit tests for CLI
 
 ## Completed
 
@@ -72,6 +72,9 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] Implement Crunchbase connector and CLI
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
