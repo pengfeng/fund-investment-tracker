@@ -12,9 +12,7 @@ Build a program that, given a fund name or identifier, finds all companies the f
 
 ## Features
 
-- CLI entrypoint usage example: fund-tracker --fund "Sequoia Capital" --output sequoia --format json
-- Tests: unit tests for connectors, normalizer, exporter, orchestrator, and CLI (pytest)
-
+- Implemented CLI entrypoint, orchestrator, Crunchbase connector (stub + API client fallback), normalizer with per-field confidence scores, exporter (JSON/CSV), and unit tests (pytest).
 ## Getting Started
 
 ### Prerequisites

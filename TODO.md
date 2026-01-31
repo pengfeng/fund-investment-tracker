@@ -3,6 +3,7 @@
 ## In Progress
 
 - [ ] No items currently in progress.*
+- [ ] Identify required data sources and obtain API access
 
 ## Pending
 
@@ -54,9 +55,7 @@
 - [ ] Accuracy: % of company-investment pairs verified by at least one reliable source
 - [ ] Performance: time to process a fund (MVP target < 2 minutes for medium-size funds)
 - [ ] Next Steps
-- [ ] Add Orchestrator to coordinate connectors and deduplicate results
 - [ ] Add unit tests for CLI
-- [ ] Identify required data sources and obtain API access
 
 ## Completed
 
@@ -91,6 +90,9 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] Run initial tests on sample funds
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] Add Orchestrator to coordinate connectors and deduplicate results
 
 ---
 
