@@ -105,9 +105,9 @@ fund-tracker --fund "Sequoia Capital" --output sequoia.json
 - [ ] Product managers
 - [ ] Requirements
 - [ ] 1 Functional
-- [ ] F1: Accept fund input via CLI, API, or UI
+- [x] F1: Accept fund input via CLI, API, or UI
 - [ ] F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies
-- [ ] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
+- [x] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
 - [ ] F4: Extract investment details: round type, date, amount, co-investors
 - [ ] F5: Provide confidence score and source links for each data point
 - [ ] F6: Export results (CSV/JSON) and provide a summary report

@@ -1,14 +1,8 @@
-# Configuration for fund-investment-tracker
-connectors:
-  crunchbase:
-    enabled: true
-    api_key: null  # Provide via environment variable or runtime config
-
+# Configuration for fund-investment-tracker (MVP)
+# Adjust concurrency and connector retry policies here.
 concurrency:
-  max_workers: 4
-  retry:
-    max_attempts: 3
-    backoff_seconds: 2
+  max_workers: 3
 
-export:
-  default_format: json
+connectors:
+  default_max_retries: 2
+  default_backoff_seconds: 1.0

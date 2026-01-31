@@ -16,4 +16,32 @@ def test_cli_output_json(capsys, tmp_path):
         sys.argv = sys_argv_backup
 
 
-# Note: More comprehensive CLI tests (file output) can be added; this minimal test ensures main() runs
+def test_cli_writes_json_file(tmp_path):
+    from leet_apps.cli import main
+    p = tmp_path / "out"
+    sys_argv_backup = sys.argv
+    try:
+        sys.argv = ["fund-tracker", "--fund", "Sequoia Capital", "--output", str(p), "--format", "json"]
+        main()
+        out_file = p.with_suffix('.json')
+        assert out_file.exists()
+        content = out_file.read_text()
+        assert '"fund"' in content or 'companies' in content
+    finally:
+        sys.argv = sys_argv_backup
+
+
+def test_cli_writes_csv_files(tmp_path):
+    from leet_apps.cli import main
+    p = tmp_path / "out"
+    sys_argv_backup = sys.argv
+    try:
+        sys.argv = ["fund-tracker", "--fund", "Sequoia Capital", "--output", str(p), "--format", "csv"]
+        main()
+        comp = str(p) + "_companies.csv"
+        inv = str(p) + "_investments.csv"
+        assert comp and inv
+        assert open(comp).read()
+        assert open(inv).read()
+    finally:
+        sys.argv = sys_argv_backup

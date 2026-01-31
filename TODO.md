@@ -3,7 +3,13 @@
 ## In Progress
 
 - [ ] No items currently in progress.*
-- [ ] Add unit tests for Crunchbase connector and CLI
+- [ ] Identify required data sources and obtain API access
+- [ ] N3: Configurable concurrency and retry policies
+- [ ] N1: Respect rate limits and robots.txt; use caching
+- [ ] F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies
+- [ ] F2: Implement PitchBook connector (stub + tests)
+- [ ] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
+- [ ] Run test suite (pytest) and fix failures
 - [ ] Add unit tests for CLI
 - [ ] Implement Crunchbase API client (replace stub)
 - [ ] Implement Crunchbase API client (replace stub)
@@ -18,7 +24,6 @@
 
 - [ ] Purpose
 - [ ] Scope
-- [ ] Input: fund name, fund identifier, or fund profile URL
 - [ ] Output: a structured list of portfolio companies with metadata (company name, website, industry, HQ, funding rounds, date of investment, amount invested if available, investor role, company status, brief description, links to sources)
 - [ ] Optional: export to CSV/JSON, deduplication of company names, fuzzy matching, and scheduled updates
 - [ ] Users
@@ -28,15 +33,8 @@
 - [ ] Requirements
 - [ ] 1 Functional
 - [ ] F1: Accept fund input via CLI, API, or UI
-- [ ] F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies
-- [ ] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
-- [ ] F4: Extract investment details: round type, date, amount, co-investors
-- [ ] F5: Provide confidence score and source links for each data point
-- [ ] F6: Export results (CSV/JSON) and provide a summary report
 - [ ] 2 Non-functional
-- [ ] N1: Respect rate limits and robots.txt; use caching
 - [ ] N2: Modular connector architecture for data sources
-- [ ] N3: Configurable concurrency and retry policies
 - [ ] N4: Secure storage of any API keys; do not commit keys
 - [ ] Architecture
 - [ ] Input layer (CLI/API/UI)
@@ -64,8 +62,6 @@
 - [ ] Accuracy: % of company-investment pairs verified by at least one reliable source
 - [ ] Performance: time to process a fund (MVP target < 2 minutes for medium-size funds)
 - [ ] Next Steps
-- [ ] Identify required data sources and obtain API access
-- [ ] Run initial tests on sample funds
 
 ## Completed
 

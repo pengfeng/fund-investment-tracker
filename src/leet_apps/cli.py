@@ -5,7 +5,7 @@ CLI entrypoint for fund-investment-tracker (MVP)
 import argparse
 import json
 import sys
-from typing import Dict, Any
+from typing import Any, Dict
 
 from leet_apps.connectors.crunchbase import CrunchbaseConnector
 from leet_apps.normalizer import normalize_results
@@ -23,10 +23,20 @@ def main(argv=None):
     args = parse_args()
     fund_input = args.fund
 
-    connector = CrunchbaseConnector()
-    raw = connector.find_portfolio(fund_input)
+    # Use orchestrator to allow multiple connectors and deduplication
+    from leet_apps.orchestrator import Orchestrator
 
-    normalized = normalize_results(raw, fund_input)
+    # Default orchestrator uses multiple connectors (Crunchbase, News, OfficialFund)
+    orchestrator = Orchestrator(connectors=[CrunchbaseConnector(),
+                                           __import__('leet_apps.connectors.news', fromlist=['']).NewsConnector(),
+                                           __import__('leet_apps.connectors.official_fund', fromlist=['']).OfficialFundConnector()])
+    raw = orchestrator.run(fund_input)
+
+    # Orchestrator may return normalized data (dict) or a raw list of records
+    if isinstance(raw, dict) and "companies" in raw:
+        normalized = raw
+    else:
+        normalized = normalize_results(raw, fund_input)
 
     # Use exporter for output
     if args.output:

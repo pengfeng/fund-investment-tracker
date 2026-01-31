@@ -12,12 +12,27 @@ Build a program that, given a fund name or identifier, finds all companies the f
 
 ## Features
 
-- CLI entrypoint (src/leet_apps/cli.py): accepts --fund, --output, --format
-- Crunchbase connector (stub) at src/leet_apps/connectors/crunchbase.py: returns sample data for MVP and provides a clear extension point for a real API/scraper
-- Normalizer (src/leet_apps/normalizer.py): maps raw connector output to unified Fund/Company/Investment schema
-- Exporter (src/leet_apps/exporter.py): exports results to JSON and CSV (companies + investments)
-- Unit tests for connector, normalizer, and exporter under src/leet_apps/tests
+- CLI entrypoint: accepts fund name, identifier, or profile URL and outputs normalized portfolio data (JSON/CSV).
+- Orchestrator: runs connectors in parallel, merges and deduplicates results, and returns normalized data model.
+- Crunchbase connector: stubbed dataset with a small API client fallback (uses CRUNCHBASE_API_KEY if provided via env).
+- Normalizer: maps connector output to the project data model and computes per-field confidence scores.
+- Exporter: JSON export (includes generated summary) and CSV export (companies + investments).
+- Unit tests: pytest suite covering connectors (stub), normalizer, exporter, orchestrator, and CLI basic run.
 
+Usage example:
+
+- Output to stdout (JSON):
+  python -m leet_apps.cli --fund "Sequoia Capital"
+
+- Write JSON file:
+  python -m leet_apps.cli --fund "Sequoia Capital" --output sequoia --format json
+
+- Write CSV files:
+  python -m leet_apps.cli --fund "Sequoia Capital" --output sequoia --format csv
+
+Notes:
+- The Crunchbase connector falls back to bundled stub data when no CRUNCHBASE_API_KEY is provided.
+- API keys should be provided via environment variables; do not commit secrets to the repository.
 ## Getting Started
 
 ### Prerequisites

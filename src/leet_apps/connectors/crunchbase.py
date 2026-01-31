@@ -53,23 +53,51 @@ class CrunchbaseConnector:
     def _parse_api_response(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Convert Crunchbase API response into the internal raw record format used by the normalizer.
 
-        This is best-effort parsing; if the structure differs, we fall back to empty list.
+        This is best-effort parsing; we support multiple common response shapes used by
+        Crunchbase-like APIs:
+        - {"data": {"items": [{"properties": {...}}, ...]}}
+        - {"data": [{"properties": {...}}, ...]}
+        - {"data": {"organizations": [...]}}
+        - {"data": {...}} with a single properties dict
+        - top-level list of entries
+
+        For each entry we try to extract a `properties` dict or use the entry itself
+        as a properties-like mapping. Entries that don't contain usable properties are skipped.
         """
         items = []
         if not data:
             return items
 
-        # Crunchbase API responses may be nested under data -> items or data -> items -> ...
-        # We'll try a few common shapes.
-        payload = data.get("data") or data
-        # Try known structures
-        if isinstance(payload, dict) and "items" in payload:
-            entries = payload.get("items") or []
-            for ent in entries:
-                # Each entry may contain a 'path' or 'properties'
-                props = ent.get("properties") if isinstance(ent, dict) else None
-                if props:
-                    items.append(self._map_props_to_raw(props))
+        payload = data.get("data") if isinstance(data, dict) else data
+        # If payload is None, fallback to original data
+        if payload is None:
+            payload = data
+
+        entries = []
+        # Normalize payload into an iterable of entry dicts
+        if isinstance(payload, dict):
+            if "items" in payload and isinstance(payload["items"], list):
+                entries = payload["items"]
+            elif "organizations" in payload and isinstance(payload["organizations"], list):
+                entries = payload["organizations"]
+            else:
+                # If payload looks like a single properties dict, treat it as a single entry
+                entries = [payload]
+        elif isinstance(payload, list):
+            entries = payload
+
+        for ent in entries:
+            if not isinstance(ent, dict):
+                continue
+            # Prefer explicit 'properties' wrapper if present
+            props = ent.get("properties") or ent
+            if not isinstance(props, dict):
+                continue
+            # Map and append
+            mapped = self._map_props_to_raw(props)
+            if mapped:
+                items.append(mapped)
+
         return items
 
     def _map_props_to_raw(self, props: Dict[str, Any]) -> Dict[str, Any]:
@@ -77,16 +105,17 @@ class CrunchbaseConnector:
         return {
             "company_name": props.get("name") or props.get("organization_name"),
             "website": props.get("homepage_url"),
-            "industry": props.get("primary_organization_type") or props.get("short_description"),
-            "hq": next((v for k, v in props.items() if k in ("city", "region", "region_name", "location")), None),
-            "founding_date": props.get("founded_on"),
-            "description": props.get("short_description") or props.get("description"),
-            "status": props.get("status") or props.get("organization_status"),
-            "investment": props.get("last_funding_on") and {
-                "round_type": props.get("last_funding_type"),
-                "date": props.get("last_funding_on"),
-                "amount": props.get("last_funding_total"),
-                "co_investors": [],
+            "industry": props.get("primary_organization_type") or props.get("short_description") or props.get("category_list"),
+            "hq": next((v for k, v in props.items() if k in ("city", "region", "region_name", "location", "headquarters_city", "headquarters_country")), None),
+            "founding_date": props.get("founded_on") or props.get("founded_year") or props.get("founding_date"),
+            "description": props.get("short_description") or props.get("description") or props.get("overview"),
+            "status": props.get("status") or props.get("organization_status") or props.get("current_status"),
+            # Attempt to normalize common funding fields
+            "investment": (props.get("last_funding_on") or props.get("last_funding_date") or props.get("latest_funding_date")) and {
+                "round_type": props.get("last_funding_type") or props.get("latest_funding_type"),
+                "date": props.get("last_funding_on") or props.get("last_funding_date") or props.get("latest_funding_date"),
+                "amount": props.get("last_funding_total") or props.get("total_funding") or props.get("latest_funding_amount"),
+                "co_investors": props.get("investors") or props.get("co_investors") or [],
                 "source_links": [props.get("homepage_url")] if props.get("homepage_url") else [],
             },
             "source_links": [props.get("homepage_url")] if props.get("homepage_url") else [],
