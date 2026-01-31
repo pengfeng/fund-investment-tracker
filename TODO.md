@@ -3,7 +3,6 @@
 ## In Progress
 
 - [ ] No items currently in progress.*
-- [ ] F4: Extract investment details: round type, date, amount, co-investors
 - [ ] Identify required data sources and obtain API access
 - [ ] N3: Configurable concurrency and retry policies
 - [ ] N1: Respect rate limits and robots.txt; use caching
@@ -11,6 +10,7 @@
 - [ ] F2: Implement PitchBook connector (stub + tests)
 - [ ] F6: Export results (CSV/JSON) and provide a summary report
 - [ ] Improve Crunchbase connector parsing and add robust unit tests (handle real API shapes, date/amount normalization, and retries)
+- [ ] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
 
 ## Pending
 
@@ -57,7 +57,7 @@
 - [ ] Performance: time to process a fund (MVP target < 2 minutes for medium-size funds)
 - [ ] Next Steps
 - [ ] Add unit tests for CLI
-- [ ] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
+- [ ] F4: Extract investment details: round type, date, amount, co-investors
 
 ## Completed
 
@@ -100,6 +100,8 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] Add official fund website connector (simple scraper)
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
