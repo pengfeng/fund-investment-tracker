@@ -1,8 +1,6 @@
-# Configuration for fund-investment-tracker (MVP)
-# Adjust concurrency and connector retry policies here.
-concurrency:
-  max_workers: 3
-
-connectors:
-  default_max_retries: 2
-  default_backoff_seconds: 1.0
+# Configuration for leet_apps
+crunchbase_api_key: ""
+concurrency: 5
+retry_policy:
+  retries: 3
+  backoff: 2
