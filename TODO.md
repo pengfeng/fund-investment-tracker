@@ -4,6 +4,8 @@
 
 - [ ] No items currently in progress.*
 - [ ] Implement Crunchbase API client (replace stub)
+- [ ] Implement per-field confidence scores and source attribution in normalizer
+- [ ] F5: Provide confidence score and source links for each data point
 
 ## Pending
 
@@ -22,7 +24,6 @@
 - [ ] F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies
 - [ ] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
 - [ ] F4: Extract investment details: round type, date, amount, co-investors
-- [ ] F5: Provide confidence score and source links for each data point
 - [ ] F6: Export results (CSV/JSON) and provide a summary report
 - [ ] 2 Non-functional
 - [ ] N1: Respect rate limits and robots.txt; use caching
@@ -56,11 +57,10 @@
 - [ ] Accuracy: % of company-investment pairs verified by at least one reliable source
 - [ ] Performance: time to process a fund (MVP target < 2 minutes for medium-size funds)
 - [ ] Next Steps
-- [ ] Identify required data sources and obtain API access
 - [ ] Run initial tests on sample funds
 - [ ] Add Orchestrator to coordinate connectors and deduplicate results
-- [ ] Add unit tests for Crunchbase connector and CLI
 - [ ] Add unit tests for CLI
+- [ ] Identify required data sources and obtain API access
 
 ## Completed
 
@@ -78,6 +78,12 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] Add unit tests for Crunchbase connector and CLI
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 
