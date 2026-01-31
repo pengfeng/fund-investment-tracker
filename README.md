@@ -12,7 +12,7 @@ Build a program that, given a fund name or identifier, finds all companies the f
 
 ## Features
 
-- Implemented CLI entrypoint, orchestrator, Crunchbase connector (stub + API client fallback), normalizer with per-field confidence scores, exporter (JSON/CSV), and unit tests (pytest).
+- Implemented CLI entrypoint, orchestrator, Crunchbase connector (stub + API client fallback), normalizer with per-field confidence scores, exporter (JSON/CSV) with generated summary report, and unit tests (pytest).
 ## Getting Started
 
 ### Prerequisites
