@@ -3,7 +3,6 @@
 ## In Progress
 
 - [ ] No items currently in progress.*
-- [ ] Run initial tests on sample funds
 
 ## Pending
 
@@ -90,6 +89,8 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] Implement per-field confidence scores and source attribution in normalizer
 - [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] Run initial tests on sample funds
 
 ---
 
