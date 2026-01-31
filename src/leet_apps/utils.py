@@ -11,6 +11,7 @@ from functools import wraps
 # Simple per-host rate limiter using last-access timestamps
 # Robots.txt parser cache
 import urllib.robotparser
+import urllib.parse
 
 _robot_parsers = {}
 
