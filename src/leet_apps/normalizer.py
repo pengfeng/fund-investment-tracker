@@ -153,9 +153,13 @@ def normalize_company(raw: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
-def normalize_investment(raw: Dict[str, Any], fund_id: str) -> Dict[str, Any]:
-    """Normalize investment information and provide per-field confidence and sources."""
-    inv = raw.get("investment", {}) or {}
+def normalize_investment_obj(inv_obj: Dict[str, Any], company_id: str, fund_id: str) -> Dict[str, Any]:
+    """Normalize a single investment object into the standard investment schema.
+
+    This function accepts an investment object (from 'investment' or one item of 'investments')
+    and the associated company_id and fund_id.
+    """
+    inv = inv_obj or {}
     round_type = inv.get("round_type")
     date = _parse_date(inv.get("date")) if inv.get("date") else None
     amount = inv.get("amount")
@@ -176,7 +180,7 @@ def normalize_investment(raw: Dict[str, Any], fund_id: str) -> Dict[str, Any]:
 
     return {
         "fund_id": fund_id,
-        "company_id": raw.get("company_name"),
+        "company_id": company_id,
         "round_type": round_type,
         "date": date,
         "amount": amount,
@@ -188,6 +192,13 @@ def normalize_investment(raw: Dict[str, Any], fund_id: str) -> Dict[str, Any]:
         "field_confidence": field_conf,
         "confidence": overall_confidence,
     }
+
+
+def normalize_investment(raw: Dict[str, Any], fund_id: str) -> Dict[str, Any]:
+    """Backward-compatible wrapper: normalize investment using raw record's 'investment' field."""
+    company_id = raw.get("company_name")
+    inv = raw.get("investment", {}) or {}
+    return normalize_investment_obj(inv, company_id=company_id, fund_id=fund_id)
 
 
 def normalize_results(raw_list: List[Dict[str, Any]], fund_name: str = "unknown-fund") -> Dict[str, Any]:

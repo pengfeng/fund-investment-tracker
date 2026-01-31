@@ -31,7 +31,17 @@ class Orchestrator:
     def __init__(self, connectors: List[Any] = None):
         self.connectors = connectors or []
         self.config = _load_config()
-        self.max_workers = self.config.get("concurrency", {}).get("max_workers", 4)
+        # Support multiple shapes for concurrency configuration for backward compatibility:
+        # - concurrency: 5
+        # - concurrency:
+        #     max_workers: 5
+        concurrency_cfg = self.config.get("concurrency", None)
+        if isinstance(concurrency_cfg, dict):
+            self.max_workers = concurrency_cfg.get("max_workers", 4)
+        elif isinstance(concurrency_cfg, int):
+            self.max_workers = concurrency_cfg
+        else:
+            self.max_workers = 4
 
     def add_connector(self, connector: Any):
         self.connectors.append(connector)
