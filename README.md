@@ -17,22 +17,6 @@ Build a program that, given a fund name or identifier, finds all companies the f
 - Crunchbase connector: stubbed dataset with a small API client fallback (uses CRUNCHBASE_API_KEY if provided via env).
 - Normalizer: maps connector output to the project data model and computes per-field confidence scores.
 - Exporter: JSON export (includes generated summary) and CSV export (companies + investments).
-- Unit tests: pytest suite covering connectors (stub), normalizer, exporter, orchestrator, and CLI basic run.
-
-Usage example:
-
-- Output to stdout (JSON):
-  python -m leet_apps.cli --fund "Sequoia Capital"
-
-- Write JSON file:
-  python -m leet_apps.cli --fund "Sequoia Capital" --output sequoia --format json
-
-- Write CSV files:
-  python -m leet_apps.cli --fund "Sequoia Capital" --output sequoia --format csv
-
-Notes:
-- The Crunchbase connector falls back to bundled stub data when no CRUNCHBASE_API_KEY is provided.
-- API keys should be provided via environment variables; do not commit secrets to the repository.
 ## Getting Started
 
 ### Prerequisites
