@@ -12,6 +12,7 @@
 - [ ] Run test suite (pytest) and fix failures
 - [ ] Add unit tests for CLI
 - [ ] Input: fund name, fund identifier, or fund profile URL
+- [ ] F4: Extract investment details: round type, date, amount, co-investors
 
 ## Pending
 
@@ -56,7 +57,6 @@
 - [ ] Accuracy: % of company-investment pairs verified by at least one reliable source
 - [ ] Performance: time to process a fund (MVP target < 2 minutes for medium-size funds)
 - [ ] Next Steps
-- [ ] F4: Extract investment details: round type, date, amount, co-investors
 
 ## Completed
 
@@ -115,6 +115,7 @@
 - [x] Improve Crunchbase connector parsing and add robust unit tests (handle real API shapes, date/amount normalization, and retries)
 - [x] This file is automatically updated by the coding agent.*
 - [x] F6: Export results (CSV/JSON) and provide a summary report
+- [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
