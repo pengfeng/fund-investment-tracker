@@ -3,10 +3,9 @@
 ## In Progress
 
 - [ ] No items currently in progress.*
-- [ ] Identify required data sources and obtain API access
 - [ ] F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies
 - [ ] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
-- [ ] Add official fund website connector (simple scraper)
+- [ ] F4: Extract investment details: round type, date, amount, co-investors
 
 ## Pending
 
@@ -22,7 +21,6 @@
 - [ ] Requirements
 - [ ] 1 Functional
 - [ ] F1: Accept fund input via CLI, API, or UI
-- [ ] F4: Extract investment details: round type, date, amount, co-investors
 - [ ] F6: Export results (CSV/JSON) and provide a summary report
 - [ ] 2 Non-functional
 - [ ] N1: Respect rate limits and robots.txt; use caching
@@ -57,6 +55,7 @@
 - [ ] Performance: time to process a fund (MVP target < 2 minutes for medium-size funds)
 - [ ] Next Steps
 - [ ] Add unit tests for CLI
+- [ ] Identify required data sources and obtain API access
 
 ## Completed
 
@@ -95,6 +94,10 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] Add Orchestrator to coordinate connectors and deduplicate results
 - [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] Add official fund website connector (simple scraper)
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 
