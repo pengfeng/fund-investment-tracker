@@ -9,7 +9,6 @@
 - [ ] F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies
 - [ ] F2: Implement PitchBook connector (stub + tests)
 - [ ] F6: Export results (CSV/JSON) and provide a summary report
-- [ ] Improve Crunchbase connector parsing and add robust unit tests (handle real API shapes, date/amount normalization, and retries)
 - [ ] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
 
 ## Pending
@@ -112,6 +111,8 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] Improve Crunchbase connector parsing and add robust unit tests (handle real API shapes, date/amount normalization, and retries)
 
 ---
 
