@@ -8,8 +8,9 @@
 - [ ] N1: Respect rate limits and robots.txt; use caching
 - [ ] F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies
 - [ ] F2: Implement PitchBook connector (stub + tests)
-- [ ] F6: Export results (CSV/JSON) and provide a summary report
 - [ ] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
+- [ ] Run test suite (pytest) and fix failures
+- [ ] Add unit tests for CLI
 
 ## Pending
 
@@ -55,7 +56,6 @@
 - [ ] Accuracy: % of company-investment pairs verified by at least one reliable source
 - [ ] Performance: time to process a fund (MVP target < 2 minutes for medium-size funds)
 - [ ] Next Steps
-- [ ] Add unit tests for CLI
 - [ ] F4: Extract investment details: round type, date, amount, co-investors
 
 ## Completed
@@ -113,6 +113,10 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] Improve Crunchbase connector parsing and add robust unit tests (handle real API shapes, date/amount normalization, and retries)
+- [x] This file is automatically updated by the coding agent.*
+- [x] F6: Export results (CSV/JSON) and provide a summary report
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
 
 ---
 
