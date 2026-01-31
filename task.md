@@ -144,7 +144,7 @@ fund-tracker --fund "Sequoia Capital" --output sequoia.json
 - [ ] Performance: time to process a fund (MVP target < 2 minutes for medium-size funds)
 - [ ] Next Steps
 - [ ] Identify required data sources and obtain API access
-- [ ] Implement Crunchbase connector and CLI
+- [x] Implement Crunchbase connector and CLI
 - [ ] Run initial tests on sample funds
 
 ## Acceptance Criteria

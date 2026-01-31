@@ -12,6 +12,7 @@
 - [ ] Implement Crunchbase API client (feature/crunchbase-api)
 - [ ] Implement Crunchbase API client (feature/crunchbase-api)
 - [ ] - [ ] Phase 1: MVP: CLI input, Crunchbase connector (using API or scraping with care), normalize output, export JSON/CSV
+- [ ] Implement Crunchbase API client (work in progress on feature/crunchbase-api)
 
 ## Pending
 
