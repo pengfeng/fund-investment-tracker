@@ -13,10 +13,7 @@
 - [ ] Add unit tests for CLI
 - [ ] Input: fund name, fund identifier, or fund profile URL
 - [ ] F4: Extract investment details: round type, date, amount, co-investors
-<<<<<<< HEAD
 - [ ] F3: Improve company detail extraction and add unit tests
-=======
->>>>>>> main
 
 ## Pending
 
@@ -123,10 +120,7 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
-<<<<<<< HEAD
 - [x] This file is automatically updated by the coding agent.*
-=======
->>>>>>> main
 
 ---
 
