@@ -55,6 +55,7 @@ def normalize_investment(raw: Dict[str, Any], fund_id: str) -> Dict[str, Any]:
     date = inv.get("date")
     amount = inv.get("amount")
     co_investors = inv.get("co_investors", [])
+    investor_role = inv.get("investor_role")
     source_links = inv.get("source_links", [])
 
     # Confidence heuristic: present fields get 1.0, missing 0.0. Overall confidence is average.
@@ -63,6 +64,7 @@ def normalize_investment(raw: Dict[str, Any], fund_id: str) -> Dict[str, Any]:
         "date": 1.0 if date else 0.0,
         "amount": 1.0 if amount else 0.0,
         "co_investors": 1.0 if co_investors else 0.0,
+        "investor_role": 1.0 if investor_role else 0.0,
     }
     overall_confidence = sum(field_conf.values()) / max(len(field_conf), 1)
 
@@ -73,6 +75,7 @@ def normalize_investment(raw: Dict[str, Any], fund_id: str) -> Dict[str, Any]:
         "date": date,
         "amount": amount,
         "co_investors": co_investors,
+        "investor_role": investor_role,
         "source_links": source_links,
         "field_confidence": field_conf,
         "confidence": overall_confidence,

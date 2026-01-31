@@ -3,10 +3,12 @@
 ## In Progress
 
 - [ ] No items currently in progress.*
-- [ ] F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies
 - [ ] F4: Extract investment details: round type, date, amount, co-investors
 - [ ] Identify required data sources and obtain API access
 - [ ] N3: Configurable concurrency and retry policies
+- [ ] N1: Respect rate limits and robots.txt; use caching
+- [ ] F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies
+- [ ] F2: Implement PitchBook connector (stub + tests)
 
 ## Pending
 
@@ -24,7 +26,6 @@
 - [ ] F1: Accept fund input via CLI, API, or UI
 - [ ] F6: Export results (CSV/JSON) and provide a summary report
 - [ ] 2 Non-functional
-- [ ] N1: Respect rate limits and robots.txt; use caching
 - [ ] N2: Modular connector architecture for data sources
 - [ ] N4: Secure storage of any API keys; do not commit keys
 - [ ] Architecture
@@ -98,6 +99,9 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] Add official fund website connector (simple scraper)
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
