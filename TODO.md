@@ -11,12 +11,12 @@
 - [ ] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
 - [ ] Run test suite (pytest) and fix failures
 - [ ] Add unit tests for CLI
+- [ ] Input: fund name, fund identifier, or fund profile URL
 
 ## Pending
 
 - [ ] Purpose
 - [ ] Scope
-- [ ] Input: fund name, fund identifier, or fund profile URL
 - [ ] Output: a structured list of portfolio companies with metadata (company name, website, industry, HQ, funding rounds, date of investment, amount invested if available, investor role, company status, brief description, links to sources)
 - [ ] Optional: export to CSV/JSON, deduplication of company names, fuzzy matching, and scheduled updates
 - [ ] Users
@@ -115,6 +115,7 @@
 - [x] Improve Crunchbase connector parsing and add robust unit tests (handle real API shapes, date/amount normalization, and retries)
 - [x] This file is automatically updated by the coding agent.*
 - [x] F6: Export results (CSV/JSON) and provide a summary report
+- [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 

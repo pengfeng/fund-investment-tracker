@@ -9,6 +9,42 @@ import threading
 from functools import wraps
 
 # Simple per-host rate limiter using last-access timestamps
+# Robots.txt parser cache
+import urllib.robotparser
+
+_robot_parsers = {}
+
+
+def allowed_to_fetch(url: str, user_agent: str = "*") -> bool:
+    """Check robots.txt for the given URL's host and return whether fetching is allowed.
+
+    Results are cached per host to avoid repeated network calls. If robots.txt cannot be
+    fetched or parsed, default to False (conservative).
+    """
+    try:
+        parsed = urllib.parse.urlparse(url)
+        host = parsed.netloc
+        if not host:
+            return False
+        rp = _robot_parsers.get(host)
+        if rp is None:
+            robots_url = f"{parsed.scheme}://{host}/robots.txt"
+            rp = urllib.robotparser.RobotFileParser()
+            try:
+                rp.set_url(robots_url)
+                rp.read()
+            except Exception:
+                # If robots can't be read, be conservative and disallow
+                _robot_parsers[host] = None
+                return False
+            _robot_parsers[host] = rp
+        if _robot_parsers[host] is None:
+            return False
+        return _robot_parsers[host].can_fetch(user_agent, url)
+    except Exception:
+        return False
+
+# Simple per-host rate limiter using last-access timestamps
 _host_locks = {}
 _host_last_access = {}
 _host_lock = threading.Lock()
