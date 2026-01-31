@@ -26,7 +26,10 @@ def main(argv=None):
     # Use orchestrator to allow multiple connectors and deduplication
     from leet_apps.orchestrator import Orchestrator
 
-    orchestrator = Orchestrator(connectors=[CrunchbaseConnector()])
+    # Default orchestrator uses multiple connectors (Crunchbase, News, OfficialFund)
+    orchestrator = Orchestrator(connectors=[CrunchbaseConnector(),
+                                           __import__('leet_apps.connectors.news', fromlist=['']).NewsConnector(),
+                                           __import__('leet_apps.connectors.official_fund', fromlist=['']).OfficialFundConnector()])
     raw = orchestrator.run(fund_input)
 
     # Orchestrator may return normalized data (dict) or a raw list of records

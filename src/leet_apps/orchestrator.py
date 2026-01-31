@@ -114,11 +114,16 @@ class Orchestrator:
 
 
 def run_for_fund(fund_input: str) -> Dict[str, Any]:
-    """Convenience function to run the default orchestrator (with Crunchbase connector) for a fund."""
+    """Convenience function to run the default orchestrator (with default connectors) for a fund.
+
+    Default connectors: CrunchbaseConnector, NewsConnector, OfficialFundConnector (all use stub data when no API keys provided).
+    """
     try:
         from leet_apps.connectors.crunchbase import CrunchbaseConnector
+        from leet_apps.connectors.news import NewsConnector
+        from leet_apps.connectors.official_fund import OfficialFundConnector
 
-        orch = Orchestrator(connectors=[CrunchbaseConnector()])
+        orch = Orchestrator(connectors=[CrunchbaseConnector(), NewsConnector(), OfficialFundConnector()])
     except Exception:
         orch = Orchestrator()
     return orch.run(fund_input)
