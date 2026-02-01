@@ -7,7 +7,6 @@
 - [ ] N3: Configurable concurrency and retry policies
 - [ ] N1: Respect rate limits and robots.txt; use caching
 - [ ] F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies
-- [ ] F2: Implement PitchBook connector (stub + tests)
 - [ ] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
 - [ ] Run test suite (pytest) and fix failures
 - [ ] Add unit tests for CLI
@@ -84,6 +83,7 @@
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
 - [x] Implement Crunchbase connector and CLI
+- [x] F2: Implement PitchBook connector (stub + tests)
 
 ---
 

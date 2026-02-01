@@ -12,11 +12,7 @@ Build a program that, given a fund name or identifier, finds all companies the f
 
 ## Features
 
-- CLI entrypoint: accepts fund name, identifier, or profile URL and outputs normalized portfolio data (JSON/CSV).
-- Orchestrator: runs connectors in parallel, merges and deduplicates results, and returns normalized data model.
-- Crunchbase connector: stubbed dataset with a small API client fallback (uses CRUNCHBASE_API_KEY if provided via env).
-- Normalizer: maps connector output to the project data model and computes per-field confidence scores.
-- Exporter: JSON export (includes generated summary) and CSV export (companies + investments).
+- PitchBook connector: deterministic stub returning sample portfolio companies for development and tests. Usage: PitchBookConnector().find_portfolio("Sequoia Capital") returns a list of company records including investment details.
 ## Getting Started
 
 ### Prerequisites
