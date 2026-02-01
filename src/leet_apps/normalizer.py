@@ -63,7 +63,7 @@ def _parse_amount(amount: Optional[str]) -> Tuple[Optional[float], Optional[str]
         s_low = re.sub(r"([0-9\.,]+)\s*[kmb]\b", r"\1", s_low, flags=re.I)
 
     # Extract numeric portion
-    num_match = re.search(r"([0-9\.,]+)")
+    num_match = re.search(r"([0-9\.,]+)", s_low)
     if not num_match:
         return None, currency
     num_str = num_match.group(1)
