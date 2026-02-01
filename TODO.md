@@ -7,20 +7,13 @@
 - [ ] N3: Configurable concurrency and retry policies
 - [ ] N1: Respect rate limits and robots.txt; use caching
 - [ ] F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies
+- [ ] F2: Implement PitchBook connector (stub + tests)
 - [ ] F3: Extract company details: name, website, industry, HQ, founding date, description, current status
 - [ ] Run test suite (pytest) and fix failures
 - [ ] Add unit tests for CLI
-- [ ] Implement Crunchbase API client (replace stub)
-- [ ] Implement Crunchbase API client (replace stub)
-- [ ] Implement Crunchbase API client (replace stub)
-- [ ] Implement Crunchbase API client (replace stub) — start work in feature branch
-- [ ] Implement Crunchbase API client (feature/crunchbase-api)
-- [ ] Implement Crunchbase API client (feature/crunchbase-api)
-- [ ] - [ ] Phase 1: MVP: CLI input, Crunchbase connector (using API or scraping with care), normalize output, export JSON/CSV
-- [ ] Implement Crunchbase API client (work in progress on feature/crunchbase-api)
-- [ ] Implement Crunchbase API client (feature/crunchbase-api)
-- [ ] Update README usage and testing docs
-- [ ] Implement Crunchbase API client (feature/crunchbase-api)
+- [ ] Input: fund name, fund identifier, or fund profile URL
+- [ ] F4: Extract investment details: round type, date, amount, co-investors
+- [ ] F3: Improve company detail extraction and add unit tests
 
 ## Pending
 
@@ -53,6 +46,7 @@
 - [ ] Investment: fund_id, company_id, round_type, date, amount, co_investors, source_links, confidence
 - [ ] Implementation Guide Compliance
 - [ ] Implementation Plan
+- [ ] Phase 1: MVP: CLI input, Crunchbase connector (using API or scraping with care), normalize output, export JSON/CSV
 - [ ] Phase 2: Add more connectors (PitchBook, LinkedIn, news), UI, scheduling
 - [ ] Phase 3: Improve entity resolution, fuzzy matching, and dashboards
 - [ ] Risks
@@ -74,16 +68,59 @@
 - [x] Add CSV exporter and tests
 - [x] This file is automatically updated by the coding agent.*
 - [x] This file is automatically updated by the coding agent.*
-- [x] This file is automatically updated by the coding agent.*
-- [x] This file is automatically updated by the coding agent.*
-- [x] This file is automatically updated by the coding agent.*
-- [x] This file is automatically updated by the coding agent.*
-- [x] This file is automatically updated by the coding agent.*
-- [x] This file is automatically updated by the coding agent.*
-- [x] This file is automatically updated by the coding agent.*
-- [x] This file is automatically updated by the coding agent.*
 - [x] Implement Crunchbase connector and CLI
-- [x] F2: Implement PitchBook connector (stub + tests)
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] Add unit tests for Crunchbase connector and CLI
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] F5: Provide confidence score and source links for each data point
+- [x] This file is automatically updated by the coding agent.*
+- [x] Implement Crunchbase API client (replace stub)
+- [x] This file is automatically updated by the coding agent.*
+- [x] Implement per-field confidence scores and source attribution in normalizer
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] Run initial tests on sample funds
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] Add Orchestrator to coordinate connectors and deduplicate results
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] Add official fund website connector (simple scraper)
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] Improve Crunchbase connector parsing and add robust unit tests (handle real API shapes, date/amount normalization, and retries)
+- [x] This file is automatically updated by the coding agent.*
+- [x] F6: Export results (CSV/JSON) and provide a summary report
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
+- [x] This file is automatically updated by the coding agent.*
 
 ---
 
