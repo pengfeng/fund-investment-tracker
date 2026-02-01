@@ -1,0 +1,44 @@
+{
+  "todos": [
+    {
+      "content": "No items currently in progress.*",
+      "status": "in_progress",
+      "id": "1"
+    },
+    {
+      "content": "Identify required data sources and obtain API access",
+      "status": "in_progress",
+      "id": "2"
+    },
+    {
+      "content": "N3: Configurable concurrency and retry policies",
+      "status": "in_progress",
+      "id": "3"
+    },
+    {
+      "content": "N1: Respect rate limits and robots.txt; use caching",
+      "status": "in_progress",
+      "id": "4"
+    },
+    {
+      "content": "F2: Search public data sources (Crunchbase, PitchBook, LinkedIn, official fund pages, news) to find portfolio companies",
+      "status": "in_progress",
+      "id": "5"
+    },
+    {
+      "content": "F2: Implement PitchBook connector (stub + tests)",
+      "status": "in_progress",
+      "id": "6"
+    },
+    {
+      "content": "F6: Export results (CSV/JSON) and provide a summary report",
+      "status": "completed",
+      "id": "7"
+    },
+    {
+      "content": "F3: Extract company details: name, website, industry, HQ, founding date, description, current status",
+      "status": "in_progress",
+      "id": "8"
+    }
+  ]
+}
