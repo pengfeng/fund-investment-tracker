@@ -12,28 +12,10 @@ Build a program that, given a fund name or identifier, finds all companies the f
 
 ## Features
 
-- PitchBook connector: deterministic stub returning sample portfolio companies for development and tests. Usage: PitchBookConnector().find_portfolio("Sequoia Capital") returns a list of company records including investment details.
-- CLI entrypoint: accepts fund name, identifier, or profile URL and outputs normalized portfolio data (JSON/CSV).
-- Orchestrator: runs connectors in parallel, merges and deduplicates results, and returns normalized data model.
-- Crunchbase connector: stubbed dataset with a small API client fallback (uses CRUNCHBASE_API_KEY if provided via env).
-- Normalizer: maps connector output to the project data model and computes per-field confidence scores.
-- Exporter: JSON export (includes generated summary) and CSV export (companies + investments).
-- Unit tests: pytest suite covering connectors (stub), normalizer, exporter, orchestrator, and CLI basic run.
+- CSV exporter: exports companies and investments to two CSV files with basic field mapping.
+- Orchestrator: runs multiple connectors (Crunchbase, News, OfficialFund) concurrently and deduplicates by company name.
+- Added rate limiter and robots.txt helper in utils to respect scraping constraints.
 
-Usage example:
-
-- Output to stdout (JSON):
-  python -m leet_apps.cli --fund "Sequoia Capital"
-
-- Write JSON file:
-  python -m leet_apps.cli --fund "Sequoia Capital" --output sequoia --format json
-
-- Write CSV files:
-  python -m leet_apps.cli --fund "Sequoia Capital" --output sequoia --format csv
-
-Notes:
-- The Crunchbase connector falls back to bundled stub data when no CRUNCHBASE_API_KEY is provided.
-- API keys should be provided via environment variables; do not commit secrets to the repository.
 ## Getting Started
 
 ### Prerequisites

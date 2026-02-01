@@ -14,6 +14,7 @@
 - [ ] Input: fund name, fund identifier, or fund profile URL
 - [ ] F4: Extract investment details: round type, date, amount, co-investors
 - [ ] F3: Improve company detail extraction and add unit tests
+- [ ] Fix failing tests and CLI CSV output
 
 ## Pending
 
@@ -58,6 +59,7 @@
 - [ ] Accuracy: % of company-investment pairs verified by at least one reliable source
 - [ ] Performance: time to process a fund (MVP target < 2 minutes for medium-size funds)
 - [ ] Next Steps
+- [ ] Run test suite (pytest) and fix failures
 
 ## Completed
 
