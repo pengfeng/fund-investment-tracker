@@ -21,6 +21,7 @@
 - [ ] Implement Crunchbase API client (work in progress on feature/crunchbase-api)
 - [ ] Implement Crunchbase API client (feature/crunchbase-api)
 - [ ] Update README usage and testing docs
+- [ ] Implement Crunchbase API client (feature/crunchbase-api)
 
 ## Pending
 
